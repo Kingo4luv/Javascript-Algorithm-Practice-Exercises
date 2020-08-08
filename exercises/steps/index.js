@@ -17,24 +17,39 @@
 //       '### '
 //       '####'
 
-function steps(n) {
-    // for (let index = 1; index <= n; index++) {
-    //     console.log(`${'#'.repeat(index)}${" ".repeat(n-index)}`)
-    // }
-    for (let row = 0; row < n; row++) {
-        let stair = "";
-        for (let column = 0; column < n; column++) {
-            if (column <= row) {
-                stair += '#';
-            } else {
-                stair += " ";
-            }
-        }
-        console.log(stair);
-    }
-    return
+function steps(n, row = 0, stair = "") {
+  // for (let index = 1; index <= n; index++) {
+  //     console.log(`${'#'.repeat(index)}${" ".repeat(n-index)}`)
+  // }
+
+  ////////////////////////
+
+  //   for (let row = 0; row < n; row++) {
+  //     let stair = "";
+  //     for (let column = 0; column < n; column++) {
+  //       if (column <= row) {
+  //         stair += "#";
+  //       } else {
+  //         stair += " ";
+  //       }
+  //     }
+  //     console.log(stair);
+  //   }
+  //   return;
+  if (n === row) {
+    return;
+  }
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+
+  if (stair.length <= row) {
+    stair += "#";
+  } else {
+    stair += " ";
+  }
+  steps(n, row, stair);
 }
-
-
 
 module.exports = steps;
